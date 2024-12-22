@@ -12,11 +12,10 @@
             width: 100%;
             height: 100%;
             font-family: "Helvetica Neue", Arial, sans-serif;
-            background-color: #121212;
+            background-color: #111;
             color: #eaeaea;
             scroll-behavior: smooth;
             overflow-x: hidden;
-            position: relative;
         }
 
         /* Hide Scrollbar */
@@ -64,12 +63,11 @@
             font-size: 1.1rem;
             font-weight: 500;
             color: #eaeaea;
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s;
         }
 
         .topbar .nav-links a:hover {
-            color: #8d29b3; /* Next.js Purple */
-            transform: scale(1.05);
+            color: #ff3b30; /* Ferrari Red */
         }
 
         /* Hero Section */
@@ -83,14 +81,11 @@
             padding: 0 20px;
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #fff;
-            filter: blur(0px);
-            background-size: cover;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            animation: fadeIn 1s ease-in-out;
         }
 
         .hero p {
@@ -98,33 +93,96 @@
             margin-bottom: 30px;
             max-width: 600px;
             line-height: 1.6;
-            opacity: 0.8;
         }
 
-        .hero .btn {
+        /* Liquid Buttons */
+        .btn {
+            position: relative;
             display: inline-block;
             padding: 12px 24px;
             font-size: 1.1rem;
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
-            background: linear-gradient(90deg, #8d29b3, #8e44ad); /* Next.js Purple */
+            background: linear-gradient(90deg, #ff3b30, #c92c1f); /* Ferrari Red */
             box-shadow: 0 4px 15px rgba(0, 112, 243, 0.4);
+            overflow: hidden;
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
-        .hero .btn:hover {
+        .btn:hover {
             transform: scale(1.1);
-            background: linear-gradient(90deg, #8e44ad, #8d29b3);
+            background: linear-gradient(90deg, #c92c1f, #ff3b30);
+        }
+
+        /* Gooey Drip Effect */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 30%, transparent 80%);
+            animation: gooeyDrip 2s infinite ease-in-out;
+            transform: translateX(-50%) translateY(-100%);
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+            border-radius: 20px;
+            opacity: 0.7;
+            animation: gooeyDripDrop 2s infinite ease-in-out;
+            transform: translateX(-50%);
+            filter: blur(10px);
+        }
+
+        @keyframes gooeyDrip {
+            0% {
+                transform: translateX(-50%) translateY(-100%);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-50%) translateY(50%);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateX(-50%) translateY(200%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes gooeyDripDrop {
+            0% {
+                top: 100%;
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            50% {
+                top: 120%;
+                opacity: 0.3;
+                transform: scale(1.2);
+            }
+            100% {
+                top: 100%;
+                opacity: 0.7;
+                transform: scale(1);
+            }
         }
 
         /* About Section */
         .about {
             padding: 60px 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            margin-top: -50px;
+            background: #111;
         }
 
         .about h2 {
@@ -144,7 +202,7 @@
         /* Portfolio Section */
         .portfolio {
             padding: 60px 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: #1a1a1a;
             text-align: center;
         }
 
@@ -163,12 +221,11 @@
         }
 
         .portfolio-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: #222;
             padding: 20px;
             border-radius: 10px;
             color: #fff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
         }
 
         .portfolio-item:hover {
@@ -179,7 +236,7 @@
         /* Contact Section */
         .contact {
             padding: 60px 20px;
-            background: #121212;
+            background: #111;
             text-align: center;
         }
 
@@ -205,12 +262,11 @@
             font-size: 1rem;
             background: #222;
             color: #fff;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .contact form input:focus, .contact form textarea:focus {
-            border-color: #8d29b3; /* Next.js Purple */
-            box-shadow: 0 0 10px rgba(141, 41, 179, 0.5);
+            border-color: #ff3b30; /* Ferrari Red */
+            box-shadow: 0 0 10px rgba(255, 59, 48, 0.5);
         }
 
         .contact form button {
@@ -218,57 +274,16 @@
             font-size: 1rem;
             border-radius: 5px;
             border: none;
-            background: linear-gradient(90deg, #8d29b3, #8e44ad); /* Next.js Purple */
+            background: linear-gradient(90deg, #ff3b30, #c92c1f); /* Ferrari Red */
             color: #fff;
             cursor: pointer;
             transition: transform 0.3s, background 0.3s;
         }
 
         .contact form button:hover {
-            background: linear-gradient(90deg, #8e44ad, #8d29b3);
+            background: linear-gradient(90deg, #c92c1f, #ff3b30);
             transform: scale(1.1);
         }
-
-        /* Particle Effects */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.7);
-            animation: move 3s ease-in-out infinite;
-        }
-
-        @keyframes move {
-            0% {
-                transform: translateY(0) scale(0.5);
-            }
-            50% {
-                transform: translateY(100px) scale(1);
-            }
-            100% {
-                transform: translateY(0) scale(0.5);
-            }
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -312,37 +327,5 @@
             <button type="submit">Send Message</button>
         </form>
     </section>
-
-    <!-- Particle Effect -->
-    <div class="particles" id="particles"></div>
-
-    <script>
-        // Particle animation setup
-        const particlesContainer = document.getElementById("particles");
-
-        function createParticle(e) {
-            const particle = document.createElement("div");
-            particle.classList.add("particle");
-
-            const size = Math.random() * 15 + 5; // Random size between 5 and 20px
-            const x = e.clientX + (Math.random() * 30 - 15); // Random position near mouse cursor
-            const y = e.clientY + (Math.random() * 30 - 15); 
-
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${x}px`;
-            particle.style.top = `${y}px`;
-
-            particlesContainer.appendChild(particle);
-
-            // Remove particle after animation
-            setTimeout(() => {
-                particle.remove();
-            }, 3000);
-        }
-
-        // Listen for mouse movement to create particles
-        window.addEventListener("mousemove", createParticle);
-    </script>
 </body>
 </html>
